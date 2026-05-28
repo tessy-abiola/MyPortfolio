@@ -6,11 +6,9 @@ import "../styles/contact.css";
 /* ─── Scroll reveal hook ────────────────────────────────────── */
 function useReveal(rootMargin = "-60px") {
   const ref = useRef(null);
-
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -20,22 +18,25 @@ function useReveal(rootMargin = "-60px") {
       },
       { rootMargin }
     );
-
     observer.observe(el);
     return () => observer.disconnect();
   }, [rootMargin]);
-
   return ref;
 }
 
-/* ─── Contact details data ──────────────────────────────────── */
+/* ── UPDATED contact details — Twitter removed ── */
 const DETAILS = [
-  { label: "Email",    value: "youremail@example.com" },
-  { label: "GitHub",   value: "github.com/yourusername" },
+  { label: "Email",    value: "abiolatestimony110@gmail.com" },
+  { label: "GitHub",   value: "github.com/tessy-abiola" },
   { label: "Location", value: "Available Remotely" },
 ];
 
-const SOCIALS = ["GitHub", "LinkedIn", "Twitter"];
+/* ── UPDATED socials — Twitter removed, LinkedIn + Instagram added ── */
+const SOCIALS = [
+  { label: "GitHub",    href: "https://github.com/tessy-abiola" },
+  { label: "LinkedIn",  href: "https://www.linkedin.com/in/testimony-abiola-187799380" },
+  { label: "Instagram", href: "https://www.instagram.com/tessy_abiola?igsh=MWJwMm01MzJ5Ym1sZg==" },
+];
 
 /* ─── Component ─────────────────────────────────────────────── */
 export default function Contact() {
@@ -54,11 +55,8 @@ export default function Contact() {
     <section id="contact" className="contact">
       <div className="contact-inner">
 
-        {/* ── Header ────────────────────────────────────── */}
-        <div
-          className="contact-header contact-reveal"
-          ref={headerRef}
-        >
+        {/* Header */}
+        <div className="contact-header contact-reveal" ref={headerRef}>
           <span className="contact-label">05 — Contact</span>
           <h2 className="contact-headline">
             Let's build{" "}
@@ -67,10 +65,10 @@ export default function Contact() {
           </h2>
         </div>
 
-        {/* ── Two column grid ───────────────────────────── */}
+        {/* Two column grid */}
         <div className="contact-grid">
 
-          {/* LEFT — Info */}
+          {/* LEFT */}
           <div
             className="contact-reveal"
             ref={leftRef}
@@ -82,7 +80,6 @@ export default function Contact() {
               I'd love to hear from you.
             </p>
 
-            {/* Contact details */}
             <div className="contact-details">
               {DETAILS.map(({ label, value }) => (
                 <div key={label} className="contact-detail-row">
@@ -92,16 +89,17 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Social links */}
             <div className="contact-socials">
-              {SOCIALS.map((s) => (
+              {SOCIALS.map(({ label, href }) => (
                 <a
-                  key={s}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="contact-social-link"
-                  aria-label={s}
+                  aria-label={label}
                 >
-                  {s}
+                  {label}
                 </a>
               ))}
             </div>
@@ -114,7 +112,6 @@ export default function Contact() {
             style={{ transitionDelay: "160ms" }}
           >
             {sent ? (
-              /* Success state */
               <div className="contact-success">
                 <div className="contact-success-icon" aria-hidden="true">✓</div>
                 <p className="contact-success-title">Message sent!</p>
@@ -123,15 +120,11 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              /* Form */
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
 
-                {/* Name + Email row */}
                 <div className="contact-form-row">
                   <div className="contact-field">
-                    <label className="contact-field-label" htmlFor="name">
-                      Name
-                    </label>
+                    <label className="contact-field-label" htmlFor="name">Name</label>
                     <input
                       id="name"
                       type="text"
@@ -140,11 +133,8 @@ export default function Contact() {
                       required
                     />
                   </div>
-
                   <div className="contact-field">
-                    <label className="contact-field-label" htmlFor="email">
-                      Email
-                    </label>
+                    <label className="contact-field-label" htmlFor="email">Email</label>
                     <input
                       id="email"
                       type="email"
@@ -155,11 +145,8 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Subject */}
                 <div className="contact-field">
-                  <label className="contact-field-label" htmlFor="subject">
-                    Subject
-                  </label>
+                  <label className="contact-field-label" htmlFor="subject">Subject</label>
                   <input
                     id="subject"
                     type="text"
@@ -168,11 +155,8 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Message */}
                 <div className="contact-field">
-                  <label className="contact-field-label" htmlFor="message">
-                    Message
-                  </label>
+                  <label className="contact-field-label" htmlFor="message">Message</label>
                   <textarea
                     id="message"
                     className="contact-textarea"
@@ -182,7 +166,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Submit */}
                 <button type="submit" className="contact-submit">
                   Send Message →
                 </button>

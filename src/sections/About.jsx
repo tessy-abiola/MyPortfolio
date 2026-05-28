@@ -27,27 +27,28 @@ const PHILOSOPHY_CARDS = [
   },
 ];
 
+/* ── UPDATED paragraphs ── */
 const PARAGRAPHS = [
   {
     text: (
       <>
         I am a frontend developer focused on building{" "}
         <strong>modern, responsive, and high-performance</strong> web applications
-        using React and contemporary UI technologies.
+        with React and contemporary UI technologies.
       </>
     ),
     featured: true,
   },
   {
-    text: "I enjoy turning ideas into clean, functional, and visually refined digital experiences, with strong attention to detail in layout, typography, and user interaction.",
+    text: "I solve real user problems by creating clean, intuitive, and accessible interfaces that improve usability and overall user experience.",
     featured: false,
   },
   {
-    text: "My approach to development is centered around simplicity, usability, and performance — ensuring that every interface I build is both aesthetically pleasing and highly functional across all devices.",
+    text: "My approach is centered on simplicity, performance, and scalability, ensuring every product is visually refined and works seamlessly across all devices.",
     featured: false,
   },
   {
-    text: "I have hands-on experience with React, JavaScript, and Tailwind CSS to build scalable frontend applications, and I am continuously improving my skills in backend development with Node.js and Express.",
+    text: "I have hands-on experience with React, JavaScript, and Tailwind CSS to build scalable frontend applications, and I am expanding my backend skills with Node.js and Express to develop more complete solutions.",
     featured: false,
   },
 ];
@@ -55,11 +56,9 @@ const PARAGRAPHS = [
 /* ─── Scroll reveal hook ────────────────────────────────────── */
 function useReveal(rootMargin = "-60px") {
   const ref = useRef(null);
-
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -69,11 +68,9 @@ function useReveal(rootMargin = "-60px") {
       },
       { rootMargin }
     );
-
     observer.observe(el);
     return () => observer.disconnect();
   }, [rootMargin]);
-
   return ref;
 }
 
@@ -87,25 +84,18 @@ export default function About() {
     <section id="about" className="about">
       <div className="about-inner">
 
-        {/* ── LEFT COLUMN ─────────────────────────────────── */}
-        <div
-          className="about-left about-reveal"
-          ref={leftRef}
-        >
-          {/* Watermark */}
+        {/* LEFT */}
+        <div className="about-left about-reveal" ref={leftRef}>
           <span className="about-watermark" aria-hidden="true">01</span>
-
-          {/* Label */}
           <span className="about-label">01 — About me</span>
 
-          {/* Statement headline */}
+          {/* ── UPDATED headline ── */}
           <h2 className="about-headline">
             Building digital<br />
             experiences <em>that</em><br />
-            actually matter.
+            solve real problems.
           </h2>
 
-          {/* Philosophy cards */}
           <div className="about-cards">
             {PHILOSOPHY_CARDS.map((card, i) => (
               <div
@@ -125,14 +115,9 @@ export default function About() {
           </div>
         </div>
 
-        {/* ── RIGHT COLUMN ────────────────────────────────── */}
+        {/* RIGHT */}
         <div className="about-right">
-
-          {/* Paragraphs */}
-          <div
-            className="about-paragraphs about-reveal"
-            ref={rightRef}
-          >
+          <div className="about-paragraphs about-reveal" ref={rightRef}>
             {PARAGRAPHS.map((p, i) => (
               <p
                 key={i}
@@ -146,22 +131,22 @@ export default function About() {
 
           <hr className="about-rule" />
 
-          {/* Status card */}
-          <div
-            className="about-status about-reveal"
-            ref={statusRef}
-          >
+          {/* ── UPDATED status card ── */}
+          <div className="about-status about-reveal" ref={statusRef}>
             <div className="about-status-left">
               <span className="about-status-dot" aria-hidden="true" />
               <div className="about-status-text">
                 <span className="about-status-title">Currently building</span>
-                <span className="about-status-sub">FRONTEND · FULLSTACK TRANSITION</span>
+                <span className="about-status-sub">
+                  Frontend Developer specializing in React, currently open to work
+                  and expanding into Full-Stack development with Node.js
+                </span>
               </div>
             </div>
             <span className="about-status-badge">Open to work</span>
           </div>
-
         </div>
+
       </div>
     </section>
   );

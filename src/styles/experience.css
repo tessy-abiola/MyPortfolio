@@ -77,10 +77,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
-/* Vertical line */
 .experience-timeline::before {
   content: '';
   position: absolute;
@@ -99,10 +97,13 @@
 /* ─── Timeline entry ────────────────────────────────────────── */
 .exp-entry {
   position: relative;
-  padding: 0 0 48px 32px;
+  padding: 0 0 52px 32px;
 }
 
-/* Dot on the timeline */
+.exp-entry:last-child {
+  padding-bottom: 0;
+}
+
 .exp-entry::before {
   content: '';
   position: absolute;
@@ -116,19 +117,39 @@
   z-index: 1;
 }
 
+/* ─── Entry meta (date + location) ─────────────────────────── */
+.exp-entry-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
 .exp-date {
   font-family: 'DM Mono', monospace;
   font-size: 10.5px;
-  color: rgba(251, 191, 36, 0.6);
+  color: rgba(251, 191, 36, 0.65);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 10px;
+}
+
+.exp-location {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.08em;
+}
+
+.exp-location::before {
+  content: '·';
+  margin-right: 8px;
+  color: rgba(255, 255, 255, 0.15);
 }
 
 .exp-role {
   font-family: 'Sora', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.015em;
@@ -137,9 +158,9 @@
 
 .exp-org {
   font-family: 'DM Sans', sans-serif;
-  font-size: 13.5px;
+  font-size: 13px;
   color: rgba(99, 102, 241, 0.8);
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 /* Bullet list */
@@ -149,7 +170,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .exp-bullet {
@@ -157,17 +178,17 @@
   align-items: flex-start;
   gap: 12px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14.5px;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.42);
   line-height: 1.65;
 }
 
 .exp-bullet::before {
   content: '→';
-  color: rgba(251, 191, 36, 0.5);
+  color: rgba(251, 191, 36, 0.45);
   flex-shrink: 0;
   margin-top: 1px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 /* ─── RIGHT — Achievements ──────────────────────────────────── */
@@ -187,7 +208,6 @@
   gap: 12px;
 }
 
-/* Single achievement card */
 .achievement-card {
   display: flex;
   align-items: flex-start;
@@ -219,7 +239,6 @@
   flex-shrink: 0;
   color: rgba(251, 191, 36, 0.8);
   font-family: 'DM Mono', monospace;
-  font-weight: 500;
 }
 
 .achievement-text {
@@ -238,5 +257,15 @@
   .experience-grid {
     grid-template-columns: 1fr;
     gap: 56px;
+  }
+
+  .exp-entry-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .exp-location::before {
+    display: none;
   }
 }

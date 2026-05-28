@@ -1,72 +1,112 @@
-import { motion } from "framer-motion";
+// src/sections/Hero.jsx
+
 import "../styles/hero.css";
 
-export default function Hero() {
+function AnimatedHeadline({ text, baseDelay = 0.25, className = "" }) {
+  const words = text.split(" ");
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center px-6"
-    >
-      <div className="text-center max-w-3xl">
-
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-gray-400 text-sm mb-6"
+    <span className={className}>
+      {words.map((word, i) => (
+        <span
+          key={i}
+          className="hero-word"
+          style={{ animationDelay: `${baseDelay + i * 0.09}s` }}
         >
-          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-          Available for opportunities
-        </motion.div>
+          {word}
+          {i < words.length - 1 ? "\u00A0" : ""}
+        </span>
+      ))}
+    </span>
+  );
+}
 
-        {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight leading-tight"
-        >
-          Frontend Developer
-        </motion.h1>
+const STACK_TAGS = ["React", "JavaScript", "Tailwind CSS", "Framer Motion", "Node.js"];
 
-        {/* Sub text */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="mt-6 text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
-        >
-          I build modern, responsive, and high-performance web applications
-          using React and clean UI design principles.
-        </motion.p>
+export default function Hero() {
+  const scrollToProjects = () =>
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
 
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          className="mt-10 flex flex-col md:flex-row gap-4 justify-center"
-        >
-          <div className="flex gap-4">
-  <a
-    href="#projects"
-    className="px-6 py-3 bg-white text-black rounded-full font-medium
-    hover:scale-[1.03] transition-transform duration-300"
-  >
-    View Projects
-  </a>
+  const scrollToContact = () =>
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
-  <a
-    href="#contact"
-    className="px-6 py-3 rounded-full border border-white/15 text-white
-    hover:bg-white/10 transition-all duration-300"
-  >
-    Contact Me
-  </a>
-</div>
-        </motion.div>
+  return (
+    <section id="hero" className="hero">
+
+      {/* Background */}
+      <div className="hero-grid"         aria-hidden="true" />
+      <div className="hero-orb hero-orb-1" aria-hidden="true" />
+      <div className="hero-orb hero-orb-2" aria-hidden="true" />
+      <div className="hero-orb hero-orb-3" aria-hidden="true" />
+
+      <div className="hero-content">
+
+        {/* ── UPDATED badge text ── */}
+        <div className="hero-badge" aria-label="You should work with me">
+          <span className="hero-badge-dot" aria-hidden="true" />
+          <span className="hero-badge-text">You should work with me</span>
+        </div>
+
+        {/* Headline */}
+        <h1 className="hero-headline" aria-label="Frontend Developer">
+          <AnimatedHeadline text="Frontend" baseDelay={0.28} />
+          <br />
+          <span className="hero-headline-accent">
+            <AnimatedHeadline text="Developer." baseDelay={0.42} />
+          </span>
+        </h1>
+
+        {/* Divider */}
+        <div className="hero-divider" aria-hidden="true">
+          <span className="hero-divider-line" />
+          <span className="hero-divider-label">Based on the web · Open to remote</span>
+          <span className="hero-divider-line" />
+        </div>
+
+        {/* ── UPDATED subtitle ── */}
+        <p className="hero-subtitle">
+          Focused on building <strong>modern, responsive, and high-performance</strong> web
+          applications using React. Currently expanding into fullstack development
+          with Node.js and Express.
+        </p>
+
+        {/* CTAs */}
+        <div className="hero-actions">
+          <button
+            className="hero-btn-primary"
+            onClick={scrollToProjects}
+            aria-label="View my projects"
+          >
+            View my work
+            <span aria-hidden="true">→</span>
+          </button>
+          <button
+            className="hero-btn-secondary"
+            onClick={scrollToContact}
+            aria-label="Get in touch"
+          >
+            Get in touch
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+
+        {/* Stack tags */}
+        <div className="hero-stack" aria-label="Core technologies">
+          <span className="hero-stack-label">Stack</span>
+          {STACK_TAGS.map((tag) => (
+            <span key={tag} className="hero-tag">{tag}</span>
+          ))}
+        </div>
 
       </div>
+
+      {/* Scroll cue */}
+      <div className="hero-scroll-cue" aria-hidden="true">
+        <span className="hero-scroll-label">Scroll</span>
+        <div className="hero-scroll-track">
+          <div className="hero-scroll-thumb" />
+        </div>
+      </div>
+
     </section>
   );
 }

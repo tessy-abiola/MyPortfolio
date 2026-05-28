@@ -2,24 +2,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=DM+Mono:wght@400;500&display=swap');
 
-/* ─── Nav wrapper (outer positioning) ─────────────────────── */
 .nav-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 100;
   display: flex;
   justify-content: center;
   padding: 20px 24px 0;
-  pointer-events: none; /* let clicks through the gap */
+  pointer-events: none;
 }
 
-body {
-  padding-top: 80px;
-}
-
-/* ─── Pill container ───────────────────────────────────────── */
 .nav-pill {
   pointer-events: all;
   width: 100%;
@@ -38,18 +32,18 @@ body {
     box-shadow  0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── UPDATED: softer, slightly lighter dark background ── */
 .nav-pill.scrolled {
-  background: rgba(8, 8, 14, 0.75);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(22, 22, 32, 0.82);
+  border-color: rgba(255, 255, 255, 0.10);
   box-shadow:
-    0 0 0 1px rgba(99, 102, 241, 0.06),
-    0 8px 32px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+    0 0 0 1px rgba(99, 102, 241, 0.07),
+    0 8px 32px rgba(0, 0, 0, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
 }
 
-/* ─── Logo ─────────────────────────────────────────────────── */
 .nav-logo {
   font-family: 'DM Mono', monospace;
   font-size: 14px;
@@ -63,15 +57,10 @@ body {
   transition: opacity 0.2s;
 }
 
-.nav-logo:hover {
-  opacity: 1;
-}
+.nav-logo:hover { opacity: 1; }
 
-.nav-logo span {
-  color: rgba(99, 102, 241, 0.9);
-}
+.nav-logo span { color: rgba(99, 102, 241, 0.9); }
 
-/* ─── Links group ──────────────────────────────────────────── */
 .nav-links {
   display: flex;
   align-items: center;
@@ -81,9 +70,7 @@ body {
   padding: 0;
 }
 
-.nav-links li {
-  position: relative;
-}
+.nav-links li { position: relative; }
 
 .nav-link-btn {
   background: none;
@@ -105,25 +92,20 @@ body {
   background: rgba(255, 255, 255, 0.06);
 }
 
-.nav-link-btn.active {
-  color: #fff;
-}
+.nav-link-btn.active { color: #fff; }
 
-/* Active pill highlight */
 .nav-link-btn.active::after {
   content: '';
   position: absolute;
   bottom: 4px;
   left: 50%;
   transform: translateX(-50%);
-  transition: width 0.06s linear;
-  width: 30px;
+  width: 18px;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, #6366f1, #0ea5e9);
 }
 
-/* ─── CTA Button ───────────────────────────────────────────── */
 .nav-cta {
   display: flex;
   align-items: center;
@@ -150,11 +132,8 @@ body {
   transform: translateY(-1px);
 }
 
-.nav-cta:active {
-  transform: translateY(0);
-}
+.nav-cta:active { transform: translateY(0); }
 
-/* Dot indicator inside CTA */
 .nav-cta-dot {
   width: 6px;
   height: 6px;
@@ -164,7 +143,6 @@ body {
   flex-shrink: 0;
 }
 
-/* ─── Mobile menu toggle (hamburger) ───────────────────────── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -180,9 +158,7 @@ body {
   transition: background 0.2s;
 }
 
-.nav-hamburger:hover {
-  background: rgba(255, 255, 255, 0.07);
-}
+.nav-hamburger:hover { background: rgba(255, 255, 255, 0.07); }
 
 .nav-hamburger span {
   display: block;
@@ -192,28 +168,18 @@ body {
   transition: transform 0.3s, opacity 0.3s, width 0.3s;
 }
 
-.nav-hamburger span:nth-child(2) {
-  width: 65%;
-}
+.nav-hamburger span:nth-child(2) { width: 65%; }
 
-.nav-hamburger.open span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
-}
-.nav-hamburger.open span:nth-child(2) {
-  opacity: 0;
-  width: 0;
-}
-.nav-hamburger.open span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
-}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* ─── Mobile dropdown ──────────────────────────────────────── */
 .nav-mobile-menu {
   position: fixed;
   top: 84px;
   left: 16px;
   right: 16px;
-  background: rgba(10, 10, 18, 0.96);
+  background: rgba(18, 18, 28, 0.97);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 12px;
@@ -225,14 +191,8 @@ body {
 }
 
 @keyframes menuIn {
-  from {
-    opacity: 0;
-    transform: scaleY(0.92) translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: scaleY(1) translateY(0);
-  }
+  from { opacity: 0; transform: scaleY(0.92) translateY(-8px); }
+  to   { opacity: 1; transform: scaleY(1) translateY(0); }
 }
 
 .nav-mobile-menu ul {
@@ -294,23 +254,9 @@ body {
   border-color: rgba(99, 102, 241, 0.35);
 }
 
-/* ─── Responsive breakpoint ────────────────────────────────── */
 @media (max-width: 640px) {
-  .nav-links,
-  .nav-cta {
-    display: none;
-  }
-
-  .nav-hamburger {
-    display: flex;
-  }
-
-  .nav-wrapper {
-    padding: 14px 16px 0;
-  }
-
-  .nav-pill {
-    height: 48px;
-    padding: 0 8px 0 18px;
-  }
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-wrapper { padding: 14px 16px 0; }
+  .nav-pill { height: 48px; padding: 0 8px 0 18px; }
 }
