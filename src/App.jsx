@@ -8,6 +8,7 @@ import Skills     from "./sections/Skills.jsx";
 import Projects   from "./sections/Projects.jsx";
 import Experience from "./sections/Experience.jsx";
 import Contact    from "./sections/Contact.jsx";
+import React from 'react'
 
 export default function App() {
   return (
