@@ -1,7 +1,7 @@
 // src/sections/About.jsx
 
 import { useEffect, useRef } from "react";
-import "../styles/about.css";
+import "../styles/About.css";
 
 /* ─── Data ──────────────────────────────────────────────────── */
 const PHILOSOPHY_CARDS = [

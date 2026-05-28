@@ -1,7 +1,7 @@
 // src/sections/Skills.jsx
 
 import { useEffect, useRef } from "react";
-import "../styles/skills.css";
+import "../styles/Skills.css";
 
 /* ─── Bento card data ───────────────────────────────────────── */
 const CARDS = [

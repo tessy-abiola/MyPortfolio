@@ -1,7 +1,7 @@
 // src/sections/Projects.jsx
 
 import { useEffect, useRef } from "react";
-import "../styles/projects.css";
+import "../styles/Projects.css";
 
 /* ─── Project data ──────────────────────────────────────────── */
 const PROJECTS = [

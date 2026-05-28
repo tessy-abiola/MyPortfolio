@@ -1,7 +1,7 @@
 // src/sections/Experience.jsx
 
 import { useEffect, useRef } from "react";
-import "../styles/experience.css";
+import "../styles/Experience.css";
 
 /* ─── Data ──────────────────────────────────────────────────── */
 const EXPERIENCE = [
