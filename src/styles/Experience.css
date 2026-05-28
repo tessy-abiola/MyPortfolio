@@ -1,0 +1,242 @@
+/* src/styles/experience.css */
+
+/* ─── Section ───────────────────────────────────────────────── */
+.experience {
+  position: relative;
+  background: #08080c;
+  padding: 140px 28px;
+  overflow: hidden;
+}
+
+.experience::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(251,191,36,0.3), transparent);
+}
+
+/* ─── Inner wrapper ─────────────────────────────────────────── */
+.experience-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ─── Scroll reveal ─────────────────────────────────────────── */
+.exp-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.exp-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.experience-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(251, 191, 36, 0.8);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.experience-headline {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3.5vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 0 0 72px;
+}
+
+.experience-headline span {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Two column layout ─────────────────────────────────────── */
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ─── LEFT — Timeline ───────────────────────────────────────── */
+.experience-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Vertical line */
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 1px;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(251, 191, 36, 0.4),
+    rgba(251, 191, 36, 0.05) 80%,
+    transparent
+  );
+}
+
+/* ─── Timeline entry ────────────────────────────────────────── */
+.exp-entry {
+  position: relative;
+  padding: 0 0 48px 32px;
+}
+
+/* Dot on the timeline */
+.exp-entry::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(251, 191, 36, 0.9);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  z-index: 1;
+}
+
+.exp-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(251, 191, 36, 0.6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.exp-role {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.015em;
+  margin: 0 0 4px;
+}
+
+.exp-org {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: rgba(99, 102, 241, 0.8);
+  margin: 0 0 24px;
+}
+
+/* Bullet list */
+.exp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exp-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.65;
+}
+
+.exp-bullet::before {
+  content: '→';
+  color: rgba(251, 191, 36, 0.5);
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 13px;
+}
+
+/* ─── RIGHT — Achievements ──────────────────────────────────── */
+.achievements-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.achievements-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Single achievement card */
+.achievement-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  cursor: default;
+}
+
+.achievement-card:hover {
+  border-color: rgba(251, 191, 36, 0.2);
+  background: rgba(251, 191, 36, 0.04);
+  transform: translateX(4px);
+}
+
+.achievement-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  color: rgba(251, 191, 36, 0.8);
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+}
+
+.achievement-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.65;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .experience {
+    padding: 100px 20px;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+}

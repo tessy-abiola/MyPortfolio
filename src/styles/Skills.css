@@ -1,0 +1,275 @@
+/* src/styles/skills.css */
+
+/* ─── Section ───────────────────────────────────────────────── */
+.skills {
+  position: relative;
+  background: #08080c;
+  padding: 140px 28px;
+  overflow: hidden;
+}
+
+/* Faint separator line from top */
+.skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(14,165,233,0.3), transparent);
+}
+
+/* ─── Inner wrapper ─────────────────────────────────────────── */
+.skills-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.skills-header {
+  margin-bottom: 64px;
+}
+
+.skills-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(14, 165, 233, 0.8);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.skills-headline {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3.5vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 0;
+}
+
+.skills-headline span {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Bento grid ────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+/* ─── Scroll reveal ─────────────────────────────────────────── */
+.skills-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skills-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Bento card ────────────────────────────────────────────── */
+.skills-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.028);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 28px 28px 32px;
+  overflow: hidden;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  cursor: default;
+}
+
+/* Top accent bar — hidden by default, revealed on hover */
+.skills-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 999px 999px 0 0;
+  background: var(--card-accent, linear-gradient(90deg, #6366f1, #0ea5e9));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.skills-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.045);
+  transform: translateY(-3px);
+}
+
+.skills-card:hover::before {
+  opacity: 1;
+}
+
+/* Card size variants */
+.skills-card--wide {
+  grid-column: span 2;
+}
+
+.skills-card--tall {
+  grid-row: span 2;
+}
+
+/* ─── Card header ───────────────────────────────────────────── */
+.skills-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.skills-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skills-card-category {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.skills-card-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -0.01em;
+}
+
+.skills-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ─── Skill tags ────────────────────────────────────────────── */
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skills-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 6px 12px;
+  letter-spacing: 0.03em;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.skills-card:hover .skills-tag {
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Learning badge inside card ────────────────────────────── */
+.skills-learning-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(251, 191, 36, 0.7);
+  background: rgba(251, 191, 36, 0.07);
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  border-radius: 999px;
+  padding: 4px 10px;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.skills-learning-badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(251, 191, 36, 0.8);
+  flex-shrink: 0;
+}
+
+/* ─── Stat pill (used in the wide Frontend card) ────────────── */
+.skills-stat-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.skills-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  flex: 1;
+  min-width: 80px;
+}
+
+.skills-stat-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.skills-stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .skills {
+    padding: 100px 20px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-card--wide,
+  .skills-card--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
