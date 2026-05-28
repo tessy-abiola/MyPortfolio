@@ -47,21 +47,23 @@ export default function Hero() {
           transition={{ delay: 0.25 }}
           className="mt-10 flex flex-col md:flex-row gap-4 justify-center"
         >
-          <a
-            href="#projects"
-            className="px-6 py-3 bg-white text-black rounded-full font-medium
-            hover:scale-[1.03] transition-transform duration-300"
-          >
-            View Projects
-          </a>
+          <div className="flex gap-4">
+  <a
+    href="#projects"
+    className="px-6 py-3 bg-white text-black rounded-full font-medium
+    hover:scale-[1.03] transition-transform duration-300"
+  >
+    View Projects
+  </a>
 
-          <a
-            href="#contact"
-            className="px-6 py-3 rounded-full border border-white/15 text-white
-            hover:bg-white/10 transition-all duration-300"
-          >
-            Contact Me
-          </a>
+  <a
+    href="#contact"
+    className="px-6 py-3 rounded-full border border-white/15 text-white
+    hover:bg-white/10 transition-all duration-300"
+  >
+    Contact Me
+  </a>
+</div>
         </motion.div>
 
       </div>
