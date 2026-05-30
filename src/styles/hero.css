@@ -1,0 +1,394 @@
+/* src/styles/hero.css */
+
+/* ─── Section ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #08080c;
+  overflow: hidden;
+  padding: 0 28px;
+}
+
+/* ─── Ambient gradient orbs ────────────────────────────────── */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.55;
+}
+
+.hero-orb-1 {
+  width: 600px;
+  height: 600px;
+  top: -100px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(99,102,241,0.22) 0%, transparent 65%);
+  animation: orbDrift1 14s ease-in-out infinite alternate;
+}
+
+.hero-orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -80px;
+  right: -40px;
+  background: radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 65%);
+  animation: orbDrift2 18s ease-in-out infinite alternate;
+}
+
+.hero-orb-3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 55%;
+  background: radial-gradient(circle, rgba(139,92,246,0.10) 0%, transparent 65%);
+  animation: orbDrift1 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orbDrift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.08); }
+}
+@keyframes orbDrift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-30px, -40px) scale(1.06); }
+}
+
+/* ─── Grid texture ──────────────────────────────────────────── */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* ─── Content wrapper ───────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  /* FIX: enough top clearance for the fixed navbar (52px pill + 20px offset + breathing room) */
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+/* ─── Availability badge ────────────────────────────────────── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 6px 14px 6px 10px;
+  /* FIX: explicit bottom margin so badge doesn't crowd the headline */
+  margin-bottom: 36px;
+
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+}
+
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34,197,94,0.7);
+  flex-shrink: 0;
+}
+
+.hero-badge-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ─── Headline ──────────────────────────────────────────────── */
+/* FIX: display:block on h1 prevents inline stacking of animated words */
+.hero-headline {
+  display: block;
+  margin: 0 0 12px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  /* FIX: line-height 1.08 gives the two lines clear vertical separation */
+  font-size: clamp(52px, 8vw, 96px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+.hero-headline-accent {
+  display: block;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 45%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* FIX: inline-block + will-change prevents layout jank during animation */
+.hero-word {
+  display: inline-block;
+  will-change: opacity, transform;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: wordUp 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* ─── Divider ───────────────────────────────────────────────── */
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  /* FIX: consistent top and bottom margins */
+  margin: 28px 0 28px;
+
+  opacity: 0;
+  animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
+}
+
+.hero-divider-line {
+  height: 1px;
+  width: 48px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.5), rgba(14,165,233,0.3));
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.hero-divider-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ─── Subtitle ──────────────────────────────────────────────── */
+.hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(15px, 1.7vw, 18px);
+  line-height: 1.8;
+  color: rgba(255,255,255,0.48);
+  max-width: 520px;
+  /* FIX: clear, consistent bottom margin before buttons */
+  margin: 0 0 44px;
+
+  opacity: 0;
+  animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.9s forwards;
+}
+
+.hero-subtitle strong {
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+/* ─── CTA buttons ───────────────────────────────────────────── */
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  /* FIX: no extra margin-top — subtitle already provides the gap */
+  margin-bottom: 0;
+
+  opacity: 0;
+  animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) 1.05s forwards;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #6366f1, #0ea5e9);
+  border: none;
+  border-radius: 12px;
+  /* FIX: explicit height via padding so both buttons align */
+  padding: 13px 28px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(99,102,241,0.35);
+}
+
+.hero-btn-primary:active { transform: translateY(0); }
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 13px 28px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.hero-btn-secondary:hover {
+  border-color: rgba(255,255,255,0.28);
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+
+/* ─── Stack tags ────────────────────────────────────────────── */
+.hero-stack {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* FIX: breathing room between buttons and stack row */
+  margin-top: 44px;
+  flex-wrap: wrap;
+
+  opacity: 0;
+  animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) 1.2s forwards;
+}
+
+.hero-stack-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+.hero-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.38);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 5px 11px;
+  letter-spacing: 0.04em;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.hero-tag:hover {
+  color: rgba(99,102,241,0.9);
+  border-color: rgba(99,102,241,0.25);
+  background: rgba(99,102,241,0.08);
+}
+
+/* ─── Scroll cue ────────────────────────────────────────────── */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease 1.6s forwards;
+}
+
+.hero-scroll-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero-scroll-track {
+  width: 1px;
+  height: 52px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-scroll-thumb {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(99,102,241,0.7), rgba(14,165,233,0.5));
+  border-radius: 999px;
+  animation: scrollThumb 2.2s ease-in-out 1.8s infinite;
+}
+
+@keyframes scrollThumb {
+  0%   { top: -100%; opacity: 1; }
+  60%  { top: 100%;  opacity: 1; }
+  61%  { top: 100%;  opacity: 0; }
+  62%  { top: -100%; opacity: 0; }
+  100% { top: -100%; opacity: 0; }
+}
+
+/* ─── Shared keyframes ──────────────────────────────────────── */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes wordUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 20px;
+    align-items: flex-start;
+  }
+
+  .hero-content {
+    padding-top: 110px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-orb-1 { width: 320px; height: 320px; }
+  .hero-orb-2 { width: 260px; height: 260px; }
+  .hero-orb-3 { display: none; }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-divider-label {
+    display: none;
+  }
+}

@@ -96,11 +96,13 @@ export default function Experience() {
           </h2>
         </div>
 
-        {/* Two column grid */}
         <div className="experience-grid">
 
           {/* LEFT — Timeline */}
-          <div className="experience-timeline exp-reveal" ref={timelineRef}>
+          <div
+            className="experience-timeline exp-reveal"
+            ref={timelineRef}
+          >
             {EXPERIENCE.map((entry, i) => (
               <div className="exp-entry" key={i}>
                 <div className="exp-entry-meta">
@@ -118,9 +120,9 @@ export default function Experience() {
             ))}
           </div>
 
-          {/* RIGHT — Achievements */}
+          {/* RIGHT — Achievements wrapped in sticky container */}
           <div
-            className="exp-reveal"
+            className="achievements-wrapper exp-reveal"
             ref={achievementsRef}
             style={{ transitionDelay: "100ms" }}
           >

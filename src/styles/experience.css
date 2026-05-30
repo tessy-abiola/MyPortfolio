@@ -33,7 +33,6 @@
     opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 .exp-reveal.visible {
   opacity: 1;
   transform: translateY(0);
@@ -57,18 +56,17 @@
   line-height: 1.08;
   letter-spacing: -0.025em;
   color: #fff;
-  margin: 0 0 72px;
+  /* FIX: reduced from 72px — tighter connection to content */
+  margin: 0 0 56px;
 }
-
-.experience-headline span {
-  color: rgba(255, 255, 255, 0.25);
-}
+.experience-headline span { color: rgba(255,255,255,0.25); }
 
 /* ─── Two column layout ─────────────────────────────────────── */
 .experience-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  /* FIX: reduced gap — prevents the right column from feeling disconnected */
+  gap: 56px;
   align-items: start;
 }
 
@@ -88,8 +86,8 @@
   bottom: 0;
   background: linear-gradient(
     to bottom,
-    rgba(251, 191, 36, 0.4),
-    rgba(251, 191, 36, 0.05) 80%,
+    rgba(251,191,36,0.4),
+    rgba(251,191,36,0.05) 85%,
     transparent
   );
 }
@@ -97,12 +95,10 @@
 /* ─── Timeline entry ────────────────────────────────────────── */
 .exp-entry {
   position: relative;
-  padding: 0 0 52px 32px;
+  /* FIX: reduced padding-bottom — was 52px, now 36px for tighter rhythm */
+  padding: 0 0 36px 32px;
 }
-
-.exp-entry:last-child {
-  padding-bottom: 0;
-}
+.exp-entry:last-child { padding-bottom: 0; }
 
 .exp-entry::before {
   content: '';
@@ -112,24 +108,24 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(251, 191, 36, 0.9);
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  background: rgba(251,191,36,0.9);
+  box-shadow: 0 0 10px rgba(251,191,36,0.5);
   z-index: 1;
 }
 
-/* ─── Entry meta (date + location) ─────────────────────────── */
+/* ─── Entry meta ────────────────────────────────────────────── */
 .exp-entry-meta {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .exp-date {
   font-family: 'DM Mono', monospace;
   font-size: 10.5px;
-  color: rgba(251, 191, 36, 0.65);
+  color: rgba(251,191,36,0.65);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -137,30 +133,30 @@
 .exp-location {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255,255,255,0.2);
   letter-spacing: 0.08em;
 }
-
 .exp-location::before {
   content: '·';
   margin-right: 8px;
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(255,255,255,0.15);
 }
 
 .exp-role {
   font-family: 'Sora', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.015em;
-  margin: 0 0 4px;
+  margin: 0 0 3px;
 }
 
 .exp-org {
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
-  color: rgba(99, 102, 241, 0.8);
-  margin: 0 0 20px;
+  color: rgba(99,102,241,0.8);
+  /* FIX: tighter gap between org name and bullets */
+  margin: 0 0 14px;
 }
 
 /* Bullet list */
@@ -170,102 +166,108 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  /* FIX: tighter gap between bullets */
+  gap: 8px;
 }
 
 .exp-bullet {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.42);
-  line-height: 1.65;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
 }
-
 .exp-bullet::before {
   content: '→';
-  color: rgba(251, 191, 36, 0.45);
+  color: rgba(251,191,36,0.4);
   flex-shrink: 0;
   margin-top: 1px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 /* ─── RIGHT — Achievements ──────────────────────────────────── */
+/* FIX: sticky so it stays aligned while the long timeline scrolls */
+.achievements-wrapper {
+  position: sticky;
+  top: 100px;
+}
+
 .achievements-title {
   font-family: 'DM Mono', monospace;
   font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.22);
+  color: rgba(255,255,255,0.22);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .achievements-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .achievement-card {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 18px 20px;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
+  /* FIX: slightly reduced padding for tighter feel */
+  padding: 15px 18px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
   transition: border-color 0.25s, background 0.25s, transform 0.25s;
   cursor: default;
 }
-
 .achievement-card:hover {
-  border-color: rgba(251, 191, 36, 0.2);
-  background: rgba(251, 191, 36, 0.04);
+  border-color: rgba(251,191,36,0.2);
+  background: rgba(251,191,36,0.04);
   transform: translateX(4px);
 }
 
 .achievement-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.18);
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: rgba(251,191,36,0.1);
+  border: 1px solid rgba(251,191,36,0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 11px;
   flex-shrink: 0;
-  color: rgba(251, 191, 36, 0.8);
+  color: rgba(251,191,36,0.8);
   font-family: 'DM Mono', monospace;
 }
 
 .achievement-text {
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.65;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
 }
 
 /* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .experience {
-    padding: 100px 20px;
-  }
+  .experience { padding: 100px 20px; }
 
   .experience-grid {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 48px;
+  }
+
+  /* Remove sticky on mobile — no need when stacked */
+  .achievements-wrapper {
+    position: static;
   }
 
   .exp-entry-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 3px;
   }
-
-  .exp-location::before {
-    display: none;
-  }
+  .exp-location::before { display: none; }
 }
