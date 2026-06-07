@@ -32,71 +32,106 @@ export default function Hero() {
   return (
     <section id="hero" className="hero">
 
-      {/* Background */}
-      <div className="hero-grid"         aria-hidden="true" />
-      <div className="hero-orb hero-orb-1" aria-hidden="true" />
-      <div className="hero-orb hero-orb-2" aria-hidden="true" />
-      <div className="hero-orb hero-orb-3" aria-hidden="true" />
+      {/* ── Background layers ──────────────────────────── */}
+      <div className="hero-grid"            aria-hidden="true" />
+      <div className="hero-orb hero-orb-1"  aria-hidden="true" />
+      <div className="hero-orb hero-orb-2"  aria-hidden="true" />
+      <div className="hero-orb hero-orb-3"  aria-hidden="true" />
 
       <div className="hero-content">
+        <div className="hero-layout">
 
-        {/* ── UPDATED badge text ── */}
-        <div className="hero-badge" aria-label="You should work with me">
-          <span className="hero-badge-dot" aria-hidden="true" />
-          <span className="hero-badge-text">You should work with me</span>
+          {/* ── LEFT — text ─────────────────────────────── */}
+          <div className="hero-text">
+
+            {/* Badge */}
+            <div className="hero-badge" aria-label="You should work with me">
+              <span className="hero-badge-dot" aria-hidden="true" />
+              <span className="hero-badge-text">You should work with me</span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="hero-headline" aria-label="Frontend Developer">
+              <AnimatedHeadline text="Frontend" baseDelay={0.28} />
+              <br />
+              <span className="hero-headline-accent">
+                <AnimatedHeadline text="Developer." baseDelay={0.42} />
+              </span>
+            </h1>
+
+            {/* Divider */}
+            <div className="hero-divider" aria-hidden="true">
+              <span className="hero-divider-line" />
+              <span className="hero-divider-label">Based on the web · Open to remote</span>
+              <span className="hero-divider-line" />
+            </div>
+
+            {/* Subtitle */}
+            <p className="hero-subtitle">
+              Focused on building{" "}
+              <strong>modern, responsive, and high-performance</strong> web
+              applications using React. Currently expanding into fullstack
+              development with Node.js and Express.
+            </p>
+
+            {/* CTAs */}
+            <div className="hero-actions">
+              <button
+                className="hero-btn-primary"
+                onClick={scrollToProjects}
+                aria-label="View my projects"
+              >
+                View my work
+                <span aria-hidden="true">→</span>
+              </button>
+              <button
+                className="hero-btn-secondary"
+                onClick={scrollToContact}
+                aria-label="Get in touch"
+              >
+                Get in touch
+                <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            {/* Stack tags */}
+            <div className="hero-stack" aria-label="Core technologies">
+              <span className="hero-stack-label">Stack</span>
+              {STACK_TAGS.map((tag) => (
+                <span key={tag} className="hero-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* ── RIGHT — profile photo ────────────────────── */}
+          <div className="hero-photo-wrapper" aria-hidden="true">
+            {/* Decorative ring */}
+            <div className="hero-photo-ring" />
+            {/* Glow behind photo */}
+            <div className="hero-photo-glow" />
+            {/* Photo */}
+            <div className="hero-photo-frame">
+              <img
+                src="/images/profile.png"
+                alt="Testimony Abiola — Frontend Developer"
+                className="hero-photo"
+                loading="eager"
+                draggable="false"
+              />
+            </div>
+            {/* Floating status chip */}
+            <div className="hero-photo-chip">
+              <span className="hero-photo-chip-dot" />
+              <span className="hero-photo-chip-text">Open to work</span>
+            </div>
+            {/* Floating experience chip */}
+            <div className="hero-photo-chip hero-photo-chip--exp">
+              <span className="hero-photo-chip-icon">⚡</span>
+              <span className="hero-photo-chip-text">2+ yrs exp</span>
+            </div>
+          </div>
+
         </div>
-
-        {/* Headline */}
-        <h1 className="hero-headline" aria-label="Frontend Developer">
-          <AnimatedHeadline text="Frontend" baseDelay={0.28} />
-          <br />
-          <span className="hero-headline-accent">
-            <AnimatedHeadline text="Developer." baseDelay={0.42} />
-          </span>
-        </h1>
-
-        {/* Divider */}
-        <div className="hero-divider" aria-hidden="true">
-          <span className="hero-divider-line" />
-          <span className="hero-divider-label">Based on the web · Open to remote</span>
-          <span className="hero-divider-line" />
-        </div>
-
-        {/* ── UPDATED subtitle ── */}
-        <p className="hero-subtitle">
-          Focused on building <strong>modern, responsive, and high-performance</strong> web
-          applications using React. Currently expanding into fullstack development
-          with Node.js and Express.
-        </p>
-
-        {/* CTAs */}
-        <div className="hero-actions">
-          <button
-            className="hero-btn-primary"
-            onClick={scrollToProjects}
-            aria-label="View my projects"
-          >
-            View my work
-            <span aria-hidden="true">→</span>
-          </button>
-          <button
-            className="hero-btn-secondary"
-            onClick={scrollToContact}
-            aria-label="Get in touch"
-          >
-            Get in touch
-            <span aria-hidden="true">↗</span>
-          </button>
-        </div>
-
-        {/* Stack tags */}
-        <div className="hero-stack" aria-label="Core technologies">
-          <span className="hero-stack-label">Stack</span>
-          {STACK_TAGS.map((tag) => (
-            <span key={tag} className="hero-tag">{tag}</span>
-          ))}
-        </div>
-
       </div>
 
       {/* Scroll cue */}
