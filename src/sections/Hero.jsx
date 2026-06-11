@@ -47,7 +47,7 @@ export default function Hero() {
             {/* Badge */}
             <div className="hero-badge" aria-label="You should work with me">
               <span className="hero-badge-dot" aria-hidden="true" />
-              <span className="hero-badge-text">You should work with me</span>
+              <span className="hero-badge-text">Let's build something great together</span>
             </div>
 
             {/* Headline */}

@@ -12,7 +12,7 @@ const PROJECTS = [
       "A personal portfolio website built to showcase frontend projects and skills. Features smooth scroll animations, a dark premium UI, responsive layout, and modular React component architecture.",
     tags: ["React", "Vite", "CSS3", "Framer Motion"],
     accentColor: "#6366f1",
-    // image: null
+    image: "/images/portfolio website.png",
     live: "https://deluxe-cobbler-d8ce8d.netlify.app/",
     github: "https://github.com/tessy-abiola/MyPortfolio.git",
   },
