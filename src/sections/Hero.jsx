@@ -119,16 +119,7 @@ export default function Hero() {
                 draggable="false"
               />
             </div>
-            {/* Floating status chip */}
-            <div className="hero-photo-chip">
-              <span className="hero-photo-chip-dot" />
-              <span className="hero-photo-chip-text">Open to work</span>
-            </div>
-            {/* Floating experience chip */}
-            <div className="hero-photo-chip hero-photo-chip--exp">
-              <span className="hero-photo-chip-icon">⚡</span>
-              <span className="hero-photo-chip-text">2+ yrs exp</span>
-            </div>
+            {/* Removed floating chips */}
           </div>
 
         </div>
